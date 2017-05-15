@@ -16,6 +16,25 @@ public class PFB
 		guessCount = 0;
 	}
 	
+	public static void main (String[] args)
+	{
+		start();
+	}
+	
+	public static void start()
+	{
+		int x = 1;
+		Scanner keyboard = new Scanner (System.in);
+		while (x == 1)
+		{
+			int pfb = keyboard.nextInt();
+			guess(pfb);
+			if (guess(pfb).equals("Congratulations! You guessed it!" + '\n' + "You took " + guessCount + " guesses."))
+				x = 0;
+		}
+		keyboard.close();
+	}
+	
 	public String guess(int a)
 	{
 		guessCount ++;
