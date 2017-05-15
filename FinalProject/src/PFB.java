@@ -16,12 +16,12 @@ public class PFB
 		guessCount = 0;
 	}
 	
-	public static void main (String[] args)
+	public void main (String[] args)
 	{
 		start();
 	}
 	
-	public static void start()
+	public void start()
 	{
 		int x = 1;
 		Scanner keyboard = new Scanner (System.in);
@@ -35,7 +35,7 @@ public class PFB
 		keyboard.close();
 	}
 	
-	public String guess(int a)
+	public  String guess(int a)
 	{
 		guessCount ++;
 		if (a == answer)
