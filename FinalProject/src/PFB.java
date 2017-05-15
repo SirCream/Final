@@ -4,7 +4,6 @@ public class PFB
 	private int answer;
 	private ArrayList <Integer> digits;
 	private int guessCount;
-	private int pos;
 
 	public PFB ()
 	{
@@ -15,7 +14,6 @@ public class PFB
 			answer /= 10;
 		}
 		guessCount = 0;
-		pos = digits.size() - 1;
 	}
 	
 	public String guess(int a)
@@ -30,21 +28,21 @@ public class PFB
 			temp.add(a % 10, 0);
 			a /= 10;
 		}
-		for (int i = temp.size() - 1; i >= 0; i --)
+		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in same position
 			if (digits.get(i) == temp.get(i))
 			{
 				temp.remove(i);
 				digits.remove(i);
 				ans += "P";
 			}	
-		for (int i = temp.size() - 1; i >= 0; i --)
+		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in different position
 			if (digits.get(i) == temp.get(i + 1))
 			{
 				temp.remove(i + 1);
 				digits.remove(i);
 				ans += "F";
 			}
-		for (int i = temp.size() - 1; i >= 0; i --)
+		for (int i = temp.size() - 1; i >= 0; i --) // counts unique digits
 		{
 			temp.remove(i);
 			ans += "B";
