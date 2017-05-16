@@ -5,17 +5,6 @@ public class PFB
 	private static ArrayList <Integer> digits;
 	private static int guessCount;
 
-	public PFB ()
-	{
-		answer = 1 + (int)(Math.random() * 999);
-		while (answer > 0)
-		{
-			digits.add(0, answer % 10);
-			answer /= 10;
-		}
-		guessCount = 0;
-	}
-	
 	public static void main (String[] args)
 	{
 		start();
@@ -25,6 +14,15 @@ public class PFB
 	{
 		int x = 1;
 		Scanner keyboard = new Scanner (System.in);
+		int goal = 1 + (int)(Math.random() * 999);
+		digits = new ArrayList <Integer>();
+		while (goal > 0)
+		{
+			digits.add(0, goal % 10);
+			goal /= 10;
+		}
+		guessCount = 0;
+		
 		while (x == 1)
 		{
 			int pfb = keyboard.nextInt();
@@ -47,8 +45,8 @@ public class PFB
 			temp.add(0, a % 10);
 			a /= 10;
 		}
-		System.out.println(temp.size());
-		
+		for(int x: temp2)
+			System.out.print(x);
 //		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in same position
 //			if (temp2.get(i) == temp.get(i))
 //			{
