@@ -1,9 +1,9 @@
 import java.util.*;
 public class PFB 
 {
-	private int answer;
-	private ArrayList <Integer> digits;
-	private int guessCount;
+	private static int answer;
+	private static ArrayList <Integer> digits;
+	private static int guessCount;
 
 	public PFB ()
 	{
@@ -35,30 +35,31 @@ public class PFB
 		keyboard.close();
 	}
 	
-	public String guess(int a)
+	public static String guess(int a)
 	{
 		guessCount ++;
 		if (a == answer)
 			return ("Congratulations! You guessed it!" + '\n' + "You took " + guessCount + " guesses.");
 		String ans = "";
 		ArrayList <Integer> temp = new ArrayList <Integer>();
+		ArrayList <Integer> temp2 = digits;
 		while (a > 0)
 		{
 			temp.add(a % 10, 0);
 			a /= 10;
 		}
 		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in same position
-			if (digits.get(i) == temp.get(i))
+			if (temp2.get(i) == temp.get(i))
 			{
 				temp.remove(i);
-				digits.remove(i);
+				temp2.remove(i);
 				ans += "P";
 			}	
 		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in different position
-			if (digits.get(i) == temp.get(i + 1))
+			if (temp2.get(i) == temp.get(i + 1))
 			{
 				temp.remove(i + 1);
-				digits.remove(i);
+				temp2.remove(i);
 				ans += "F";
 			}
 		for (int i = temp.size() - 1; i >= 0; i --) // counts unique digits
