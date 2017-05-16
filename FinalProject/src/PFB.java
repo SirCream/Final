@@ -5,12 +5,27 @@ public class PFB
 	private static ArrayList <Integer> digits;
 	private static int guessCount;
 
+<<<<<<< HEAD
 	public static void main (String[] args)
+=======
+	public PFB ()
+	{
+		answer = 1 + (int)(Math.random() * 999);
+		while (answer > 0)
+		{
+			digits.add(answer % 10, 0);
+			answer /= 10;
+		}
+		guessCount = 0;
+	}
+	
+	public void main (String[] args)
+>>>>>>> origin/OG
 	{
 		start();
 	}
 	
-	public static void start()
+	public void start()
 	{
 		int x = 1;
 		Scanner keyboard = new Scanner (System.in);
@@ -32,7 +47,11 @@ public class PFB
 		keyboard.close();
 	}
 	
+<<<<<<< HEAD
 	public static String guess(int a)
+=======
+	public  String guess(int a)
+>>>>>>> origin/OG
 	{
 		guessCount ++;
 		if (a == answer)
