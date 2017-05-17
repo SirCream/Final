@@ -1,8 +1,10 @@
-
+import java.util.*;
 public class TicTacToe {
 	
 	static char[][] table = new char[3][3];
 	
+	Scanner k = new Scanner(System.in); //keyboard declaration k
+
 	public static void main(String args[]){
 		table();
 		printBoard();
@@ -21,6 +23,7 @@ public class TicTacToe {
 	    System.out.println("     --+---+--");
 	    System.out.println("  2  " + table[2][0] + " | " + table[2][1] + " | " + table[2][2]);
 	    System.out.println("     0   1   2 ");
-		
 	}
+	
+	
 }
