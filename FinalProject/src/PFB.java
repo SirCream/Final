@@ -4,28 +4,13 @@ public class PFB
 	private static int answer;
 	private static ArrayList <Integer> digits;
 	private static int guessCount;
-
-<<<<<<< HEAD
-	public static void main (String[] args)
-=======
-	public PFB ()
-	{
-		answer = 1 + (int)(Math.random() * 999);
-		while (answer > 0)
-		{
-			digits.add(answer % 10, 0);
-			answer /= 10;
-		}
-		guessCount = 0;
-	}
 	
-	public void main (String[] args)
->>>>>>> origin/OG
+	public static void main (String[] args)
 	{
 		start();
 	}
 	
-	public void start()
+	public static void start()
 	{
 		int x = 1;
 		Scanner keyboard = new Scanner (System.in);
@@ -47,11 +32,7 @@ public class PFB
 		keyboard.close();
 	}
 	
-<<<<<<< HEAD
 	public static String guess(int a)
-=======
-	public  String guess(int a)
->>>>>>> origin/OG
 	{
 		guessCount ++;
 		if (a == answer)
@@ -64,27 +45,26 @@ public class PFB
 			temp.add(0, a % 10);
 			a /= 10;
 		}
-		for(int x: temp2)
-			System.out.print(x);
-//		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in same position
-//			if (temp2.get(i) == temp.get(i))
-//			{
-//				temp.remove(i);
-//				temp2.remove(i);
-//				ans += "P";
-//			}	
-//		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in different position
-//			if (temp2.get(i) == temp.get(i + 1))
-//			{
-//				temp.remove(i + 1);
-//				temp2.remove(i);
-//				ans += "F";
-//			}
-//		for (int i = temp.size() - 1; i >= 0; i --) // counts unique digits
-//		{
-//			temp.remove(i);
-//			ans += "B";
-//		}
+		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in same position
+			if (temp2.get(i) == temp.get(i))
+			{
+				temp.remove(i);
+				temp2.remove(i);
+				ans += "P";
+			}
+		System.out.println(ans);
+		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in different position
+			if (temp2.get(i) == temp.get(i + 1))
+			{
+				temp.remove(i + 1);
+				temp2.remove(i);
+				ans += "F";
+			}
+		for (int i = temp.size() - 1; i >= 0; i --) // counts unique digits
+		{
+			temp.remove(i);
+			ans += "B";
+		}
 		return ans;
 	}
 }
