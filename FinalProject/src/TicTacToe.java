@@ -3,7 +3,7 @@ public class TicTacToe {
 	
 	static String[][] table = new String[3][3];
 	
-	public static void Main(String args[]){
+	public static void main(String args[]){
 		printBoard();
 	}
 	
