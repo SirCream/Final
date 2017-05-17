@@ -14,7 +14,8 @@ public class PFB
 	{
 		int x = 1;
 		Scanner keyboard = new Scanner (System.in);
-		int goal = 1 + (int)(Math.random() * 999);
+		answer = 1 + (int)(Math.random() * 999);
+		int goal = answer;
 		digits = new ArrayList <Integer>();
 		while (goal > 0)
 		{
@@ -22,11 +23,12 @@ public class PFB
 			goal /= 10;
 		}
 		guessCount = 0;
+		System.out.println(answer);
 		
 		while (x == 1)
 		{
 			int pfb = keyboard.nextInt();
-			if (guess(pfb).equals("Congratulations! You guessed it!" + '\n' + "You took " + guessCount + " guesses."))
+			if ((guess(pfb).equals("PPP")))
 				x = 0;
 		}
 		keyboard.close();
@@ -36,35 +38,36 @@ public class PFB
 	{
 		guessCount ++;
 		if (a == answer)
-			return ("Congratulations! You guessed it!" + '\n' + "You took " + guessCount + " guesses.");
+			System.out.println("Congratulations! You guessed it!" + '\n' + "You took " + guessCount + " guesses.");
 		String ans = "";
-		ArrayList <Integer> temp = new ArrayList <Integer>();
-		ArrayList <Integer> temp2 = digits;
+		ArrayList <Integer> guessed = new ArrayList <Integer>();
+		ArrayList <Integer> goaldigits = digits;
 		while (a > 0)
 		{
-			temp.add(0, a % 10);
+			guessed.add(0, a % 10);
 			a /= 10;
 		}
-		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in same position
-			if (temp2.get(i) == temp.get(i))
+		for (int i = guessed.size() - 1; i >= 0; i --) // checks for same digit in same position
+			if (goaldigits.get(i) == guessed.get(i))
 			{
-				temp.remove(i);
-				temp2.remove(i);
+				guessed.remove(i);
+				goaldigits.remove(i);
 				ans += "P";
 			}
-		System.out.println(ans);
-		for (int i = temp.size() - 1; i >= 0; i --) // checks for same digit in different position
-			if (temp2.get(i) == temp.get(i + 1))
+		for (int i = guessed.size() - 1; i >= 0; i --) // checks for same digit in different position
+			for (int j = guessed.size() - 1; j >= 0; j --)
+			if (goaldigits.get(i) == guessed.get(j))
 			{
-				temp.remove(i + 1);
-				temp2.remove(i);
+				guessed.remove(j);
+				goaldigits.remove(i);
 				ans += "F";
 			}
-		for (int i = temp.size() - 1; i >= 0; i --) // counts unique digits
+		for (int i = guessed.size() - 1; i >= 0; i --) // counts unique digits
 		{
-			temp.remove(i);
+			guessed.remove(i);
 			ans += "B";
 		}
+		System.out.println(ans);
 		return ans;
 	}
 }
